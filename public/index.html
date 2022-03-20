@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="./main-logo.png" />
+    <link rel="stylesheet" href="src/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -18,20 +19,135 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Spotify</title>
   </head>
-  <body>
+  <body class="app">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      <div class="logo">
+        <a href="" href="/" class="logo_link">
+          <img src="./logo.jpg" alt="Logo" width="40" height="40" align-self="left"/>
+        </a>
+        <p class="logo_text">
+          <a href="" href="/" class="logo_link">
+            Spotify
+          </a>
+        </p>
+      </div>
+      <header class="header">
+        <div class="head-controls">
+          <button class="move-controls back">
+            <img src="./back.png" alt="Previous page" width="40" height="40"/>
+          </button>
+          <button class="move-controls forward">
+            <img src="./next.png" alt="Next page" width="40" height="40"/>
+          </button>
+        </div>
+        <button class="account">
+          <img src="./song.jpg" alt="Account" width="30" height="30"/>
+          <p class="account-name">Аккаунт</p>
+        </button>
+      </header>
+      <aside class="accordion">
+        <div class="left-bar">
+          <a href="" href="/" class="bar_link">
+            <img src="./logos-1.1.jpg" alt="Main" width="50" height="40" align-self="left"/>
+            <p class="bar_text">Главная</p>
+          </a>
+          <a href="" href="/" class="bar_link">
+            <img src="./logos-2.jpg" alt="Search" width="50" height="40" align-self="left"/>
+            <p class="bar_text">Поиск</p>
+          </a>
+          <a href="" href="/" class="bar_link">
+            <img src="./logos-3.jpg" alt="My music" width="50" height="40" align-self="left"/>
+            <p class="bar_text">Моя медиатека</p>
+          </a>
+          <a href="" href="/" class="bar_link">
+            <img src="./logos-4.jpg" alt="Craete playlist" width="50" height="40" align-self="left"/>
+            <p class="bar_text">Создать плейлист</p>
+          </a>
+          <a href="" href="/" class="bar_link">
+            <img src="./logos-5.1.jpg" alt="Favourite" width="50" height="40" align-self="left"/>
+            <p class="bar_text">Любимые треки</p>
+          </a>     
+      </div>
+      </aside>
+      <main class="content">
+        <div class="playlists-row">
+          <button class="playlist-card">
+            <img src="./Love.jpg" alt="Favourite" width="70" height="70" align-self="left"/>
+            <p class="playlist-name">Любимые треки</p>
+          </button>
+          <button class="playlist-card">
+            <img src="./song.jpg" alt="playlist 1" width="70" height="70" align-self="left"/>
+            <p class="playlist-name">Плейлист 1</p>
+          </button>
+          <button class="playlist-card">
+            <img src="./song.jpg" alt="playlist 2" width="70" height="70" align-self="left"/>
+            <p class="playlist-name">Плейлист 2</p>
+          </button>
+        </div>
+        <div class="songs-row">
+          <button class="song-card"><img src="./song.jpg" alt="song 1" width="150" height="150" align-self="left"/>
+            <p class="song_name">Песня 1</p>
+          </button>
+          <button class="song-card"><img src="./song.jpg" alt="song 2" width="150" height="150" align-self="left"/>
+            <p class="song_name">Песня 2</p>
+          </button>
+          <button class="song-card"><img src="./song.jpg" alt="song 3" width="150" height="150" align-self="left"/>
+            <p class="song_name">Песня 3</p>
+          </button>
+          <button class="song-card"><img src="./song.jpg" alt="song 4" width="150" height="150" align-self="left"/>
+            <p class="song_name">Песня 4</p>
+          </button>
+          <button class="song-card"><img src="./song.jpg" alt="song 5" width="150" height="150" align-self="left"/>
+            <p class="song_name">Песня 5</p>
+          </button>
+          <button class="song-card"><img src="./song.jpg" alt="song 6" width="150" height="150" align-self="left"/>
+            <p class="song_name">Песня 6</p>
+          </button>
+          <button class="song-card"><img src="./song.jpg" alt="song 7" width="150" height="150" align-self="left"/>
+            <p class="song_name">Песня 7</p>
+          </button>
+          <button class="song-card"><img src="./song.jpg" alt="song 8" width="150" height="150" align-self="left"/>
+            <p class="song_name">Песня 8</p>
+          </button>
+        </div>
+        
+      </main>
+      <footer class="footer">
+        <button class="song">
+          <img src="./song.jpg" alt="Song" width="40" height="40"/>
+          <div class="title-song">
+            <p>Название песни</p>
+            <p>Автор песни</p>
+          </div>
+        </button>
+        <div class="controls">
+          <button class="songs-control random">
+            <img src="./logos-6.jpg" alt="Random" width="50" height="50"/>
+          </button>
+          <button class="songs-control prev">
+            <img src="./logos-7.jpg" alt="Previous song" width="50" height="50"/>
+          </button>
+          <button class="songs-control play">
+            <img src="./logos-8.jpg" alt="Play" width="50" height="50"/>
+          </button>
+          <button class="songs-control next">
+            <img src="./logos-9.jpg" alt="Next song" width="50" height="50"/>
+          </button>
+          <button class="songs-control loop">
+            <img src="./logos-10.jpg" alt="Loop" width="50" height="50"/>
+          </button>
+        </div>
+        <div class="right-footer-controls">
+          <button class="controls-right queue">
+            <img src="./logos-11.jpg" alt="Queue" width="25" height="25"/>
+          </button>
+          <button class="controls-right volume">
+            <img src="./logos-12.jpg" alt="Volume" width="25" height="25"/>
+          </button>
+        </div>
+      </footer>
   </body>
 </html>
