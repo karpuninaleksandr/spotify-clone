@@ -8,7 +8,7 @@
     display: grid;
     height: 100vh;
     overflow-x: hidden;
-    grid-template-columns: 15vw 85vw;
+    grid-template-columns: 17vw 1fr;
     grid-template-rows: 7vh 1fr 10vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -19,22 +19,9 @@
     grid-column: 2;
     color: white;
     display: flex;
-    justify-content: space-between;
     position: sticky;
     top: 0;
-}
-
-.head-controls {
-    display: flex;
-    align-self: left;
-    margin-left: 2vh;
-    margin-top: 1vh;
-}
-
-.move-controls {
-    background-color: #181818;
-    border: none;
-    margin-right: 1vh;
+    justify-content: space-between;
 }
 
 .account {
@@ -56,7 +43,7 @@
     grid-column: 1 ;
     grid-row: 1;
     display: flex;
-    padding-left: 3vh;
+    padding-left: 2vh;
     color: white;
     position: sticky;
     top: 0;
@@ -72,85 +59,61 @@
     align-self: center;
     color: white;
     text-decoration: none;
-}
-
-.accordion {
-    background-color: black;
-    grid-row: 2;
-    padding-left: 2vh;
-}
-
-.left-bar {
-    position: sticky;
-    top: 7vh;
-}
-
-.bar_text {
-    display: flex;
-    padding-top: 2vh;
-    padding-bottom: 1vh;
-    font-size: 15px;
-}
-
-.bar_link {
-    display: flex;
-    align-self: center;
-    color: gray;
-    text-decoration: none;
-    background-color: black;
-    border: none;
+    margin-right: 1vh;
 }
 
 .content {
-    background-color: rgb(13, 31, 13);
+    background-color: rgb(2, 15, 2);
     grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: grid;
+}
+
+.section_name {
     color: white;
+    margin: 1vw;
 }
 
-.playlists-row {
-    display: flex;
-    justify-content: space-around;
+.empty_alert {
+    color: white;
+    margin: 1vw;
 }
 
-.playlist-card {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    height: 10vh;
-    width: 50vh;
-    margin-top: 3vh;
-    margin-left: 1vh;
-    margin-right: 1vh;
-    margin-bottom: 2vh;
-    padding: 1vh;
+.genres_container {
+    overflow: auto;
+    height: 140px;
+}
+
+.albums_container {
+    overflow: auto;
+    height: 140px;
+}
+
+.tracks_container {
+    overflow: auto;
+    height: 160px;
+}
+
+.genre {
     background-color: #181818;
     border: none;
-    border-radius: 1vh;
-}
-
-.playlist-name {
-    margin-left: 2vh;
-    font-size: 25px;
     color: white;
+    margin: 1vh;
 }
 
-.song-row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.song-card {
-    height: 30vh;
-    width: 30vh;
+.track {
     background-color: #181818;
     border: none;
-    margin-left: 5vh;
-    margin-right: 5vh;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
     color: white;
-    border-radius: 2vh;
-    font-size: 20px;
+    margin: 1vh;
+}
+
+.album {
+    background-color: #181818;
+    border: none;
+    color: white;
+    margin: 1vh;
 }
 
 .footer {
@@ -164,40 +127,20 @@
     bottom: 0;
 }
 
-.songs-control {
-    background-color: #181818;
-    border: none;
-    margin: 1vh;
-}
-
-.controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.right-footer-controls {
-    display: flex;
-    align-self: center;
-    justify-content: flex-end;
-    margin-right: 2vh;
-}
-
-.controls-right {
-    background-color: #181818;
-    border: none;
-    margin: 1vh;
-}
-
-.curr_song {
+.current_song_container {
     display: flex;
     align-items: center;
     margin: 2vh;
     background-color: #181818;
-    border: none;
 }
 
-.title-song {
+.current_song_description {
+    
+    margin: 3vh;
+    background-color: #181818;
+}
+
+.current_song {
     margin-left: 2vh;
     font-size: 15px;
     color: white;

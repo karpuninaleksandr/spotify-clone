@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <link rel="icon" href="./logos/main-logo.png" />
     <link rel="stylesheet" href="index.css">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -23,7 +22,6 @@
     <title>Spotify</title>
   </head>
   <body class="app">
-    <!-- <script src="api.js"></script> -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
       <div class="logo">
@@ -37,130 +35,35 @@
         </p>
       </div>
       <header class="header">
-        <div class="head-controls">
-          <button class="move-controls back">
-            <img src="./buttons/header_buttons/back.png" alt="Previous" id="back" width="40" height="40"/>
-          </button>
-          <button class="move-controls forward">
-            <img src="./buttons/header_buttons/forward.png" alt="Next" id="forward" width="40" height="40"/>
-          </button>
-        </div>
+        <div></div>
         <button class="account">
-          <img src="./songs/img/song.jpg" alt="Account" width="30" height="30"/>
-          <p class="account-name">Аккаунт</p>
-        </button>
-        <button id="de">
-          <p>De</p>
-        </button>
-        <button id="bug">
-          <p>Bug</p>
+          <p class="account-name">Account: Karpunin Aleksandr</p>
+          <img src="./logos/empty_song.jpg" alt="Account" width="30" height="30"/>
         </button>
       </header>
-      <aside class="accordion">
-        <div class="left-bar">
-          <a href="" href="/" class="bar_link" id="btnHome">
-            <img src="./buttons/aside_buttons/home.png" alt="Main" width="55" height="40" />
-            <p class="bar_text">Главная</p> 
-          </a>
-          <!-- <a href="" href="/" class="bar_link"> -->
-            <!-- <img src="./logos-2.jpg" alt="Search" width="50" height="40" /> -->
-            <!-- <p class="bar_text">Поиск</p> -->
-          <!-- </a> -->
-          <!-- <a href="" href="/" class="bar_link"> -->
-            <!-- <img src="./logos-3.jpg" alt="My music" width="50" height="40" /> -->
-            <!-- <p class="bar_text">Моя медиатека</p> -->
-          <!-- </a> -->
-          <!-- <a href="" href="/" class="bar_link"> -->
-            <!-- <img src="./logos-4.jpg" alt="Create playlist" width="50" height="40" /> -->
-            <!-- <p class="bar_text">Создать плейлист</p> -->
-          <!-- </a> -->
-          <button id="fav_aside" class="bar_link">
-            <img src="./buttons/aside_buttons/heart.png" alt="Favourite" width="50" height="40" />
-            <p class="bar_text">Любимые треки</p>
-          </button>     
-      </div>
-      </aside>
       <main class="content">
-        <div class="playlists-row">
-          <button class="playlist-card" id="favourite">
-            <img src="./buttons/other_buttons/favourite.png" alt="Favourite" width="60" height="60" />
-            <p class="playlist-name">Любимые треки</p>
-          </button>
-          <button class="playlist-card">
-            <img src="./songs/img/song.jpg" alt="playlist 1" width="70" height="70" />
-            <p class="playlist-name">Плейлист 1</p>
-          </button>
-          <button class="playlist-card">
-            <img src="./songs/img/song.jpg" alt="playlist 2" width="70" height="70" />
-            <p class="playlist-name">Плейлист 2</p>
-          </button>
-        </div>
-        <div class="songs-row">
-          <button class="song-card" id="first_song"><img src="./songs/img/Burevestnik.jpg" alt="song 1" width="150" height="150" />
-            <p class="song_name">Буревестник</p>
-            <p class="author_name">Мияги</p>
-          </button>
-          <button class="song-card" id="second_song"><img src="./songs/img/Perfect.jpg" alt="song 2" width="150" height="150" />
-            <p class="song_name">Perfect</p>
-            <p class="author_name">Ed Sheeran</p>
-          </button>
-          <button class="song-card" id="third_song"><img src="./songs/img/Bystro.png" alt="song 3" width="150" height="150" />
-            <p class="song_name">Быстро</p>
-            <p class="author_name">Slava Marlow</p>
-          </button>
-          <button class="song-card" id="fourth_song"><img src="./songs/img/Photograph.jpg" alt="song 4" width="150" height="150" />
-            <p class="song_name">Photograph</p>
-            <p class="author_name">Ed Sheeran</p>
-          </button>
-          <button class="song-card" id="fifth_song"><img src="./songs/img/Shest_utra.jpg" alt="song 5" width="150" height="150" />
-            <p class="song_name">шесть утра</p>
-            <p class="author_name">тима ищет свет</p>
-          </button>
-          <button class="song-card" id="sixth_song"><img src="./songs/img/Geroy_moih_detskix_grez.jpg" alt="song 6" width="150" height="150" />
-            <p class="song_name">Герой моих детских грёз</p>
-            <p class="author_name">Аффинаж</p>
-          </button>
-          <button class="song-card" id="seventh_song"><img src="./songs/img/Krasota_i_Urodstvo.jpg" alt="song 7" width="150" height="150" />
-            <p class="song_name">Красота и Уродство</p>
-            <p class="author_name">Oxxxymiron</p>
-          </button>
-          <button class="song-card" id="eighth_song"><img src="./songs/img/Golos_i_struny.jpg" alt="song 8" width="150" height="150" />
-            <p class="song_name">Голос и струны</p>
-            <p class="author_name">Noize MC</p>
-          </button>
-        </div>
+        <p class="section_name">Genres</p>
+        <div class="genres_container"></div>
+        <p class="section_name">Albums</p>
+        <div class="albums_container"></div>
+        <p class="section_name">Tracks</p>
+        <div class="tracks_container"></div>
       </main>
       <footer class="footer">        
-        <div>
-          <button class="curr_song" id="playing_song">
-            <img src="./songs/img/song.jpg" alt="Song" width="40" height="40"/>
-            <div class="title-song">
-             <p>Название песни</p>
-             <p>Автор песни</p>
-            </div>
-          </button>
+        <div class="current_song_container">
+          <img src="./logos/empty_song.jpg" alt="Song" width="40" height="40"/>
+          <div class="current_song">
+           <p>Song name</p>
+           <p>Author</p>
+          </div>
         </div>
-         <div class="controls">
-           <button class="songs-control prev" id="btnPrev">
-            <img src="./buttons/footer_buttons/previous.png" alt="Previous song" width="30" height="30"/>
-          </button>
-          <button class="songs-control play" id="btnPlayPause">
-            <img src="./buttons/footer_buttons/play.png" alt="Play" width="50" height="50"/>
-          </button>
-          <button class="songs-control next" id="btnNext">
-            <img src="./buttons/footer_buttons/next.png" alt="Next song" width="30" height="30"/>
-          </button>
-          <button class="songs-control loop" id="btnLoop">
-            <img src="./buttons/footer_buttons/loop.png" alt="Loop" width="30" height="30"/>
-          </button>
-          <input type="range" id="timeline" min="0">
-          <audio id="audio_player"></audio>
+        <div class="current_song_description">
+          <div class="current_song">
+          <p>Release date</p>
+          <p>Spotify url</p>
         </div>
-        <div class="right-footer-controls">     
-          <button class="controls-right muted" id="btnMuted">
-            <img src="./buttons/footer_buttons/unmuted.png" alt="Volume" width="25" height="25"/>
-          </button>
         </div>
       </footer>
+      <script src="../src/index.js"></script>
   </body>
 </html>
