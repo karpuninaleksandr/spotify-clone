@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="./logos/main-logo.png" />
+    <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -18,20 +19,51 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Spotify</title>
   </head>
-  <body>
+  <body class="app">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      <div class="logo">
+        <a href="/" class="logo_link">
+          <img src="./logos/logo.jpg" alt="Logo" width="40" height="40" />
+        </a>
+        <p class="logo_text">
+          <a href="/" class="logo_link">
+            Spotify
+          </a>
+        </p>
+      </div>
+      <header class="header">
+        <div></div>
+        <button class="account">
+          <p class="account-name">Account: Karpunin Aleksandr</p>
+          <img src="./logos/empty_song.jpg" alt="Account" width="30" height="30"/>
+        </button>
+      </header>
+      <main class="content">
+        <p class="section_name">Genres</p>
+        <div class="genres_container"></div>
+        <p class="section_name">Albums</p>
+        <div class="albums_container"></div>
+        <p class="section_name">Tracks</p>
+        <div class="tracks_container"></div>
+      </main>
+      <footer class="footer">        
+        <div class="current_song_container">
+          <img src="./logos/empty_song.jpg" alt="Song" width="40" height="40"/>
+          <div class="current_song">
+           <p>Song name</p>
+           <p>Author</p>
+          </div>
+        </div>
+        <div class="current_song_description">
+          <div class="current_song">
+          <p>Release date</p>
+          <p>Spotify url</p>
+        </div>
+        </div>
+      </footer>
+      <script src="../src/index.js"></script>
   </body>
 </html>
