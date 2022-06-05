@@ -9,98 +9,66 @@ const tracks_adress_part_1 = 'https://api.spotify.com/v1/playlists/'
 const tracks_adress_part_2 = '/tracks?limit='
 const track_adress = 'https://api.spotify.com/v1/tracks/'
 
-//let access_token 
-
 export default class API {
     static access_token = null
-    /**
-     * Метод получения token для запросов к API
-     */
-    static get_token = async() => {
-        try {
+
+    static getResultOfFetch = (async(urlToFetch) => {
+        if (this.access_token == null) {
             const result = await fetch(token_adress, {
                 method: 'POST',
                 headers: {
-                    'Content-Type' : 'application/x-www-form-urlencoded',
+                    'Content-Type' : 'application/x-www-form-urlencoded',                                                   
                     'Authorization' : 'Basic ' + btoa(client_id + ':' + client_secret)
                 },
                 body: 'grant_type=client_credentials'
-            })
+            }).catch(err => console.warn(err.message))
             const data = await result.json()
             this.access_token = data.access_token
-            this.get_genres()
-        } catch(error) {return null}
-    }
+        }
+        try {
+            const result =  await fetch(urlToFetch, {
+                method: 'GET',
+                headers: 
+                {
+                    'Authorization' : 'Bearer ' + this.access_token
+                }
+            })
+            const data = await result.json()
+            if (data.error) return null
+            return data; 
+        } catch (err) {console.warn(err.message)}
+        return null
+    })
 
     /**
      * Метод получения жанров песен
      */
     static get_genres = async() => {
-        try {
-            const result = await fetch(genres_adress, {
-                method: 'GET',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization' : 'Bearer ' + this.access_token
-                }
-            })
-            const data = await result.json()
-            return data.categories.items
-        } catch(error) {return []}    
+        const data = await this.getResultOfFetch(genres_adress)
+        return data ? data.categories.items : null
     }
 
     /**
      * Метод получения жанров плейлистов согласно выбранному жанру
      */
     static get_playlists = async(genre) => {
-        try {
-            const limit = 15
-            const result = await fetch(playlist_adress_part_1 + genre + playlist_adress_part_2 + limit, {
-                method: 'GET',
-                headers: 
-                { 
-                    'Authorization' : 'Bearer ' + this.access_token
-                }
-            })
-        const data = await result.json() 
-        return data.playlists.items 
-        } catch(error) {return []}    
+        const data = await this.getResultOfFetch(playlist_adress_part_1 + genre + playlist_adress_part_2 + 15)
+        return data ? data.playlists.items : null
     }
 
     /**
      * Метод получения треков из выбранного плейлиста
      */
     static get_tracks = async(tracks) => {
-        try {
-            const limit = 15
-            const result = await fetch(tracks_adress_part_1 + tracks + tracks_adress_part_2 + limit, {
-                method: 'GET',
-                headers: 
-                {
-                    'Authorization' : 'Bearer ' + this.access_token
-                }
-            })
-            const data = await result.json();
-            return data.items 
-        } catch(error) {return []}   
+        const data = await this.getResultOfFetch(tracks_adress_part_1 + tracks + tracks_adress_part_2 + 15)
+        return data ? data.items : null
     }
-
 
     /**
      * Метод выбранного трека
      */
     static get_track = async(track) => {
-        try {
-            const result = await fetch(track_adress + track, {
-                method: 'GET',
-                headers: 
-                {
-                     'Authorization' : 'Bearer ' + this.access_token
-                }
-            })
-            const data = await result.json()
-            return data
-        } catch(error) {return null}
+        const data = await this.getResultOfFetch(track_adress + track)
+        return data ? data : null
     }
 }
-
