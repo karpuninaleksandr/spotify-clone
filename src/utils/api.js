@@ -32,7 +32,7 @@ export default class API {
                 {
                     'Authorization' : 'Bearer ' + this.access_token
                 }
-            })
+            }).catch(err => console.warn(err.message))
             const data = await result.json()
             if (data.error) return null
             return data; 
