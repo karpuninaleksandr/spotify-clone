@@ -26,7 +26,6 @@ export default function Content(props) {
                     <RowOfElements type = {"track"} elements = {tracks}  updateData = {props.updateCurrentTrack}/>
                 </div>
             </main>
-            
         </>
     )
 }
