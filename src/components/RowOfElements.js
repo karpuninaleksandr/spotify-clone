@@ -7,14 +7,15 @@ export default function RowOfElements(props) {
             return <>
                 {
                     props.elements ? props.elements.map(genre => 
-                        <ElementOfRow 
-                            type = {"genre"}
-                            id = {genre.id}
-                            img = {genre.icons[0].url} 
-                            name = {genre.name} 
-                            artist = {null} 
-                            updateData = {props.updateData}
-                        />
+                            <ElementOfRow 
+                                type = {"genre"}
+                                id = {genre.id}
+                                img = {genre.icons[0].url} 
+                                name = {genre.name} 
+                                artist = {null} 
+                                updateData = {props.updateData}
+                                key = {genre.id}
+                            />
                     ) : <ErrorMessage />
                 }
             </>
@@ -22,14 +23,15 @@ export default function RowOfElements(props) {
             return <>
                 {
                     props.elements ? props.elements.map(playlist => 
-                        <ElementOfRow 
-                            type = {"album"} 
-                            id = {playlist.id} 
-                            img = {playlist.images[0].url} 
-                            name = {playlist.name} 
-                            artist = {null} 
-                            updateData = {props.updateData}
-                        />
+                            <ElementOfRow 
+                                type = {"album"} 
+                                id = {playlist.id} 
+                                img = {playlist.images[0].url} 
+                                name = {playlist.name} 
+                                artist = {null} 
+                                updateData = {props.updateData}
+                                key = {playlist.id}
+                            />
                     ) : <ErrorMessage />
                 }
             </>
@@ -44,6 +46,7 @@ export default function RowOfElements(props) {
                             name = {track.track.name} 
                             artist = {track.track.artists[0].name} 
                             updateData = {props.updateData}
+                            key = {track.track.id}
                         />
                     ) : <ErrorMessage />
                 }

@@ -12,8 +12,8 @@ const track_adress = 'https://api.spotify.com/v1/tracks/'
 export default class API {
     static access_token = null
 
-    static getResultOfFetch = (async(urlToFetch) => {
-        if (this.access_token == null) {
+    static getResultOfFetch = async(urlToFetch) => {
+        if (!this.access_token) {
             const result = await fetch(token_adress, {
                 method: 'POST',
                 headers: {
@@ -22,10 +22,13 @@ export default class API {
                 },
                 body: 'grant_type=client_credentials'
             }).catch(err => console.warn(err.message))
-            const data = await result.json()
-            this.access_token = data.access_token
+            if (result !== undefined) {
+                const data = await result.json()
+                this.access_token = data.access_token  
+            }
         }
         try {
+            if (!this.access_token) return null
             const result =  await fetch(urlToFetch, {
                 method: 'GET',
                 headers: 
@@ -33,19 +36,24 @@ export default class API {
                     'Authorization' : 'Bearer ' + this.access_token
                 }
             }).catch(err => console.warn(err.message))
-            const data = await result.json()
-            if (data.error) return null
-            return data; 
+            if (result !== undefined) {
+                const data = await result.json()
+                return data
+            }
+            return null
         } catch (err) {console.warn(err.message)}
         return null
-    })
+    }
 
     /**
      * Метод получения жанров песен
      */
     static get_genres = async() => {
         const data = await this.getResultOfFetch(genres_adress)
-        return data ? data.categories.items : null
+        if (data) {
+            if (data.categories) return data.categories.items ? data.categories.items : null
+            return null
+        } else return null
     }
 
     /**
@@ -53,7 +61,10 @@ export default class API {
      */
     static get_playlists = async(genre) => {
         const data = await this.getResultOfFetch(playlist_adress_part_1 + genre + playlist_adress_part_2 + 15)
-        return data ? data.playlists.items : null
+        if (data) {
+            if (data.playlists) return data.playlists.items ? data.playlists.items : null
+            return null
+        } else return null
     }
 
     /**
@@ -61,11 +72,12 @@ export default class API {
      */
     static get_tracks = async(tracks) => {
         const data = await this.getResultOfFetch(tracks_adress_part_1 + tracks + tracks_adress_part_2 + 15)
-        return data ? data.items : null
+        if (data) return data ? data.items : null
+        return null
     }
 
     /**
-     * Метод выбранного трека
+     * Метод получения выбранного трека
      */
     static get_track = async(track) => {
         const data = await this.getResultOfFetch(track_adress + track)

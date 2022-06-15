@@ -1,7 +1,7 @@
 import API from "../utils/api"
 
 export default function ElementOfRow(props) {
-    return <button className={props.type} key={props.id} onClick={
+    return <button className={props.type} onClick={
         () => connectButton(props.type, props.id)  
     }>
         <img src={props.img} alt={props.type} width="100" height="100" />
@@ -23,4 +23,3 @@ export default function ElementOfRow(props) {
         }
     }
 }
-
