@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import React from 'react'
+import { useState } from 'react'
 import Content from './components/Content.js'
 import Footer from './components/Footer'
 import Header from './components/Header.js'
