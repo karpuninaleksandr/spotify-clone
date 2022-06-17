@@ -4,6 +4,6 @@ export default function RowElement(props) {
     }>
         <img src={props.img} alt={props.type} width="100" height="100" />
         <p>{props.name}</p>
-        <p>{props.artists}</p>
+        <p>{props.artist}</p>
     </button>
 }
