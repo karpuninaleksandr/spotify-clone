@@ -1,34 +1,29 @@
 import { useEffect, useState } from "react";
 
-export default function useDataHook(elementType, elementId, updateElement) {
+export default function useDataHook(elementId, fetchToInvoke) {
     const [data, setData] = useState()
     const [error, setError] = useState(false)
 
     useEffect(() => {
-
         if (elementId) {
-            const stopFetch = new AbortController()
+            let stopFetch = new AbortController()
+            const signal = stopFetch.signal
             stopFetch.abort()
 
-            updateElement(elementId).then((data) => {
+            fetchToInvoke(elementId, signal).then((data) => {
                 if (data == null) setError(true)
                 else {
                     setData(data)
                     setError(false)
                 }
+            }).catch(() => {
+                if (stopFetch.signal.aborted) return
+                setError(true)
             }) 
+            return () => {
+                stopFetch.abort()
+            }
         }
-    }, [elementId, updateElement])
-    switch (elementType) {
-        case "genres":
-            const [dataGenres, errorGenres] = [data, error]
-            return [dataGenres, errorGenres]
-        case "playlists":
-            const [dataPlaylists, errorPlaylists] = [data, error]
-            return [dataPlaylists, errorPlaylists]
-        case "tracks":
-            const [dataTracks, errorTracks] = [data, error]
-            return [dataTracks, errorTracks]       
-        default: return [data, error]     
-    }
+    }, [elementId, fetchToInvoke])
+    return [data, error]
 }

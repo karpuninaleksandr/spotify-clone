@@ -2,7 +2,7 @@ import useDataHook from "./useDataHook"
 import API from "../utils/api"
 
 export default function Footer(props) {
-    const [data, error] = useDataHook("track", props.currentTrack, API.get_track)
+    const [data, error] = useDataHook(props.currentTrack, API.get_track)
     if (error || !data) return (
         <footer className="footer">
             <div className="current_song_container">

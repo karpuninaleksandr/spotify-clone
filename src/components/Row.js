@@ -1,13 +1,28 @@
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "./ErrorMessage"
+import API from "../utils/api"
+import useDataHook from "./useDataHook"
 import RowElement from "./RowElement"
 
 export default function Row(props) {
-    if (props.error || !props.data) return <ErrorMessage />
+    let fetchToInvoke = null
+    switch(props.type) {
+        case "genre":
+            fetchToInvoke = API.get_genres
+            break
+        case "album": 
+            fetchToInvoke = API.get_playlists
+            break
+        case "track":   
+            fetchToInvoke = API.get_tracks
+            break
+    }
+    const [data, error] = useDataHook(props.elemId, fetchToInvoke)
+    if (error || !data) return <ErrorMessage />
     switch (props.type) {
         case "genre":
             return <>
                 {
-                    props.data.map(genre => genre ? 
+                    data.map(genre => genre ? 
                             <RowElement 
                                 type={props.type} 
                                 key={genre.id} 
@@ -24,7 +39,7 @@ export default function Row(props) {
         case "album":
             return <>
                 {
-                    props.data.map(playlist => playlist ? 
+                    data.map(playlist => playlist ? 
                             <RowElement 
                                 type={props.type} 
                                 key={playlist.id} 
@@ -41,7 +56,7 @@ export default function Row(props) {
         case "track":
             return <>
                 {
-                    props.data.map(track => track ? 
+                    data.map(track => track ? 
                             <RowElement 
                                 type={props.type} 
                                 key={track.track.id} 
