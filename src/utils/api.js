@@ -12,7 +12,7 @@ const track_adress = 'https://api.spotify.com/v1/tracks/'
 export default class API {
     static access_token = null
 
-    static getResultOfFetch = async(urlToFetch) => {
+    static getResultOfFetch = async(urlToFetch, signal) => {
         if (!this.access_token) {
             const result = await fetch(token_adress, {
                 method: 'POST',
@@ -20,7 +20,8 @@ export default class API {
                     'Content-Type' : 'application/x-www-form-urlencoded',                                                   
                     'Authorization' : 'Basic ' + btoa(client_id + ':' + client_secret)
                 },
-                body: 'grant_type=client_credentials'
+                body: 'grant_type=client_credentials',
+                signal: signal
             }).catch(err => console.warn(err.message))
             if (result !== undefined) {
                 const data = await result.json()
@@ -34,7 +35,8 @@ export default class API {
                 headers: 
                 {
                     'Authorization' : 'Bearer ' + this.access_token
-                }
+                },
+                signal: signal
             }).catch(err => console.warn(err.message))
             if (result !== undefined) {
                 const data = await result.json()
@@ -48,8 +50,8 @@ export default class API {
     /**
      * Метод получения жанров песен
      */
-    static get_genres = async() => {
-        const data = await this.getResultOfFetch(genres_adress)
+    static get_genres = async(ignore, signal) => {
+        const data = await this.getResultOfFetch(genres_adress, signal)
         if (data) {
             if (data.categories) return data.categories.items ? data.categories.items : null
             return null
@@ -59,8 +61,8 @@ export default class API {
     /**
      * Метод получения жанров плейлистов согласно выбранному жанру
      */
-    static get_playlists = async(genre) => {
-        const data = await this.getResultOfFetch(playlist_adress_part_1 + genre + playlist_adress_part_2 + 15)
+    static get_playlists = async(genre, signal) => {
+        const data = await this.getResultOfFetch(playlist_adress_part_1 + genre + playlist_adress_part_2 + 15, signal)
         if (data) {
             if (data.playlists) return data.playlists.items ? data.playlists.items : null
             return null
@@ -70,8 +72,8 @@ export default class API {
     /**
      * Метод получения треков из выбранного плейлиста
      */
-    static get_tracks = async(tracks) => {
-        const data = await this.getResultOfFetch(tracks_adress_part_1 + tracks + tracks_adress_part_2 + 15)
+    static get_tracks = async(tracks, signal) => {
+        const data = await this.getResultOfFetch(tracks_adress_part_1 + tracks + tracks_adress_part_2 + 15, signal)
         if (data) return data ? data.items : null
         return null
     }
@@ -79,8 +81,8 @@ export default class API {
     /**
      * Метод получения выбранного трека
      */
-    static get_track = async(track) => {
-        const data = await this.getResultOfFetch(track_adress + track)
+    static get_track = async(track, signal) => {
+        const data = await this.getResultOfFetch(track_adress + track, signal)
         return data ? data : null
     }
 }

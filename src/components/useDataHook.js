@@ -7,8 +7,7 @@ export default function useDataHook(elementId, fetchToInvoke) {
     useEffect(() => {
         if (elementId) {
             let stopFetch = new AbortController()
-            const signal = stopFetch.signal
-            stopFetch.abort()
+            let signal = stopFetch.signal
 
             fetchToInvoke(elementId, signal).then((data) => {
                 if (data == null) setError(true)
@@ -17,8 +16,8 @@ export default function useDataHook(elementId, fetchToInvoke) {
                     setError(false)
                 }
             }).catch(() => {
-                if (stopFetch.signal.aborted) return
                 setError(true)
+                if (stopFetch.signal.aborted) return
             }) 
             return () => {
                 stopFetch.abort()
