@@ -1,23 +1,21 @@
-import React from 'react';
+import { useState } from 'react'
+import Content from './components/Content.js'
+import Footer from './components/Footer'
+import Header from './components/Header.js'
+import Logo from './components/Logo'
+import './index.css'
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+function App() {
+    const[currentTrack, setCurrentTrack] = useState()
+    
+    return (
+        <div className='app'>
+            <Logo />
+            <Header />
+            <Content currentTrack = {currentTrack} updateCurrentTrack = {setCurrentTrack}/>
+            <Footer currentTrack = {currentTrack}/>
+        </div>
+    );
+}
 
-// export default App;
+export default App;
